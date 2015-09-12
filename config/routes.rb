@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'welcome/index'
 
   root to: 'welcome#index'
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
     end
 
   resources :lists, only: [] do
-    resources :tasks, only [create]
+    resources :tasks, only: [:create]
   end
 
   resources :tasks, only: [:destroy]
