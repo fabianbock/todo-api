@@ -23,7 +23,7 @@ class Api::UsersController < ApiController
 
       render json: {}, status: :no_content
     rescue ActiveRecord::RecordNotFound
-      render :json => :status => :not_found
+      render json: {}, status: :not_found
     end
   end
 
@@ -31,7 +31,7 @@ class Api::UsersController < ApiController
 
   private
    def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:name, :password, :email)
    end
 
 end

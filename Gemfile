@@ -47,3 +47,5 @@ end
 
 gem 'devise'
 
+
+gem 'figaro'

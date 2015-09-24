@@ -15,19 +15,21 @@ ActiveRecord::Schema.define(version: 20150903013055) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "title"
+    t.string   "permissions", default: "private"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
+    t.boolean  "complete",   default: false
     t.integer  "user_id"
     t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "tasks", ["list_id"], name: "index_tasks_on_list_id"

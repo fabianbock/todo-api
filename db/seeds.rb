@@ -6,9 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 admin = User.find_or_initialize_by(
-  name:     'Admin User',
   email:    'admin@example.com'
 )
+admin.name = 'Admin User'
+admin.password = 'helloworld'
 admin.save!
 
 list_one = List.create(user: admin, title: "My first List")
