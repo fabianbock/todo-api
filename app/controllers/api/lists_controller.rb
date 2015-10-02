@@ -28,11 +28,13 @@ before_action :authenticated?
 # PUT /api/users/5/lists/17  params={list: {title: 'changed_list', permissions: 'public'}}
   def update
     list = List.find(params[:id])
-    if list.update(list_params)
+    if list.update(list_params) && (list.permissions == "private" || list.permissions == "viewable" || list.permissions == "open")
       render json: list
     else
       render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
     end
+
+
   end
 
   private

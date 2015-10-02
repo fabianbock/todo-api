@@ -14,7 +14,7 @@ class Api::TasksController < ApiController
 
   def update
     task = Task.find(params[:id])
-    if Task.update(task_params)
+    if task.update(task_params)
       render json: task
     else
       render json: { errors: task.errors.full_messages }, status: :unprocessable_entity
