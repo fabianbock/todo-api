@@ -21,6 +21,9 @@ class Api::TasksController < ApiController
     end
   end
 
+  def index
+  end
+  
   private
     def task_params
       params.require(:task).permit(:title)

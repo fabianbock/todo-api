@@ -8,7 +8,11 @@ class ApiController < ApplicationController
         puts username, password
         user = User.find_by(name: username)
         if user.present?
-          user.valid_password?(password)
+          if user.valid_password?(password)
+            sign_in(user)
+          else
+            false
+          end
         else
           false
         end
